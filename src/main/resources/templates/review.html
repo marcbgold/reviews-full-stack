@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:text="|{currentReview.title}|"></title>
+<style>
+img {
+	display: block;
+	max-width: 500px;
+	max-height: 300px;
+	width: auto;
+	height: auto;
+}
+</style>
+
+</head>
+
+<body>
+	<article>
+		<p th:text="|Review Date: ${#dates.format(currentReview.reviewDate, 'MM-dd-yyyy')}|" />
+		<h2 th:text="|${currentReview.title}|"></h2>
+		<p th:text="|Year Published: ${currentReview.yearPublished}|" />
+		<p th:text="|Category: ${currentReview.category}|" />
+		<span>Tags:</span><span th:each="element: ${currentReview.tags}"
+			th:text="| ${element} /|"></span>
+
+		<p/>
+		<img th:src="${currentReview.imageUrl}"
+			th:title="${currentReview.title}" th:alt="${currentReview.title}" />
+
+		<h3>Haiku</h3>
+		<p th:each="element: ${currentReview.content}" th:text="${element}" />
+	</article>
+
+	<footer>
+		<a href="review-listing.html">Go back</a>
+	</footer>
+</body>
+</html>
