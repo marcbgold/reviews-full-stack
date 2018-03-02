@@ -1,4 +1,4 @@
-package org.wecancodeit.reviews;
+package org.wecancodeit.reviewsFullStack;
 
 import javax.annotation.Resource;
 
@@ -8,22 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class ReviewsController {
+public class ReviewController {
 
 	@Resource
-	OldReviewRepository repository;
+	ReviewRepository reviewRepo;
 
 	@RequestMapping("/review")
 	public String showReview(@RequestParam(value = "reviewId", required = true) Long id, Model model) {
-		model.addAttribute("currentReview", repository.getReviewByID(id));
+		model.addAttribute("currentReview", reviewRepo.findOne(id));
 		return "review";
 	}
-
-	@RequestMapping("/review-listing")
-	public String showAllReviews(Model model) {
-		model.addAttribute("reviewListing", repository.getAllReviews());
-		return "reviews";
-
-	}
-
 }

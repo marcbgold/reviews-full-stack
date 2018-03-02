@@ -1,4 +1,4 @@
-package org.wecancodeit.reviews;
+package org.wecancodeit.reviewsFullStack;
 
 import static java.util.Arrays.asList;
 

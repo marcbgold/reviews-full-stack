@@ -1,4 +1,4 @@
-package org.wecancodeit.reviews;
+package org.wecancodeit.reviewsFullStack;
 
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
@@ -14,6 +14,10 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.wecancodeit.reviewsFullStack.Category;
+import org.wecancodeit.reviewsFullStack.CategoryRepository;
+import org.wecancodeit.reviewsFullStack.Review;
+import org.wecancodeit.reviewsFullStack.ReviewRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
@@ -64,7 +68,7 @@ public class ReviewsFullStackJpaMappingsTest {
 	}
 
 	@Test
-	public void shouldSaveCategoryToReviewRelationship() {
+	public void shouldEstablishCategoryToReviewRelationship() {
 		category = categoryRepo.save(category);
 		long categoryId = category.getId();
 
