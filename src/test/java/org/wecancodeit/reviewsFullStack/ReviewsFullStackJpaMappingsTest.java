@@ -14,10 +14,6 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.wecancodeit.reviewsFullStack.Category;
-import org.wecancodeit.reviewsFullStack.CategoryRepository;
-import org.wecancodeit.reviewsFullStack.Review;
-import org.wecancodeit.reviewsFullStack.ReviewRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
@@ -49,7 +45,7 @@ public class ReviewsFullStackJpaMappingsTest {
 
 	@Before
 	public void setup() {
-		category = new Category("category");
+		category = new Category("category", "description");
 		firstReview = new Review(category, "first review", REVIEW_DATE, YEAR_PUBLISHED, DESCRIPTION, IMAGE_URL, HAIKU_FIRST_LINE, HAIKU_SECOND_LINE, HAIKU_THIRD_LINE);
 		secondReview = new Review(category, "second review", REVIEW_DATE, YEAR_PUBLISHED, DESCRIPTION, IMAGE_URL, HAIKU_FIRST_LINE, HAIKU_SECOND_LINE, HAIKU_THIRD_LINE);
 	}

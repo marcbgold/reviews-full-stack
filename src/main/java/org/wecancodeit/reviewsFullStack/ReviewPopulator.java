@@ -21,8 +21,8 @@ public class ReviewPopulator implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Category rpg = categoryRepo.save(new Category("RPG"));
-		Category platformer = categoryRepo.save(new Category("Platformer"));
+		Category rpg = categoryRepo.save(new Category("RPG", "Pretend to be some dudes, read lots of dialogue, and go save the world or something."));
+		Category platformer = categoryRepo.save(new Category("Platformer", "Jump on lots of platforms, and maybe stomp on bad guys or solve some puzzles."));
 
 		Review chronoTrigger = reviewRepo.save(new Review(rpg, "Chrono Trigger", new Date(), 1995, "Time-hopping shenanigans.", "./images/chrono-trigger.jpg",
 				"Mute, spiky-haired kid", "Saves the world from space monster", "By messing with time"));

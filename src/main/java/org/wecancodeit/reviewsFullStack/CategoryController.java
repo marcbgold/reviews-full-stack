@@ -19,14 +19,14 @@ public class CategoryController {
 	@RequestMapping("/categories")
 	public String showAllCategories(Model model) {
 		model.addAttribute("categoryListing", categoryRepo.findAll());
-		return "categoriesView";
+		return "allCategories";
 	}
 
 	@RequestMapping("/category")
 	public String showOneCategory(@RequestParam(value = "categoryId", required = true) Long id, Model model) {
 		Category category = categoryRepo.findOne(id);
-		model.addAttribute("categoryListing", category);
+		model.addAttribute("category", category);
 		model.addAttribute("reviewListing", category.getReviews());
-		return "singleCategoryView";
+		return "singleCategory";
 	}
 }

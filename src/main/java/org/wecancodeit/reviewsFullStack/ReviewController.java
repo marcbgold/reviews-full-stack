@@ -16,6 +16,6 @@ public class ReviewController {
 	@RequestMapping("/review")
 	public String showReview(@RequestParam(value = "reviewId", required = true) Long id, Model model) {
 		model.addAttribute("currentReview", reviewRepo.findOne(id));
-		return "review";
+		return "singleReview";
 	}
 }

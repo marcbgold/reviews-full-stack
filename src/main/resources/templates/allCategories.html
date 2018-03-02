@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Haiku Reviews</title>
-<style>
-img {
-	display: block;
-	max-width: 500px;
-	max-height: 300px;
-	width: auto;
-	height: auto;
-}
+	<title>Haiku Reviews</title>
+	<style>
+	img {
+		display: block;
+		max-width: 500px;
+		max-height: 300px;
+		width: auto;
+		height: auto;
+	}
 </style>
 </head>
 
@@ -17,13 +17,14 @@ img {
 	<h1>Haiku Reviews</h1>
 
 	<h3>An assortment of video games, reviewed via haiku. For those
-		who like brevity.</h3>
+	who like brevity.</h3>
 
 	<article>
-		<h2>Review Listing</h2>
+		<h2>Category Listing</h2>
 
-		<ul th:each="element: ${reviewListing}">
-			<li><strong><a href="review.html" th:href="@{review(reviewId=${element.id})}" th:text="${element.title}"></a></strong>
+		<ul th:each="element: ${categoryListing}">
+			<li><strong><a href="singleCategory.html" th:href="@{category(categoryId=${element.id})}" th:text="${element.name}"></a>
+			</strong>
 			<span th:text="| - ${element.description}|"></span></li>
 		</ul>
 

@@ -13,7 +13,8 @@ public class Category {
 	@Id
 	@GeneratedValue
 	private long id;
-	private String categoryName;
+	private String name;
+	private String description;
 
 	@OneToMany(mappedBy = "category")
 	Collection<Review> reviews;
@@ -21,16 +22,21 @@ public class Category {
 	public Category() {
 	}
 
-	public Category(String categoryName) {
-		this.categoryName = categoryName;
+	public Category(String name, String description) {
+		this.name = name;
+		this.description = description;
 	}
 
 	public long getId() {
 		return id;
 	}
 
-	public String getCategoryName() {
-		return categoryName;
+	public String getName() {
+		return name;
+	}
+
+	public String getDescription() {
+		return description;
 	}
 
 	public Collection<Review> getReviews() {
