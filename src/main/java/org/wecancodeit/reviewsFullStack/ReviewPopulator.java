@@ -24,11 +24,11 @@ public class ReviewPopulator implements CommandLineRunner {
 		Category rpg = categoryRepo.save(new Category("RPG", "Pretend to be some dudes, read lots of dialogue, and go save the world or something."));
 		Category platformer = categoryRepo.save(new Category("Platformer", "Jump on lots of platforms, and maybe stomp on bad guys or solve some puzzles."));
 
-		Tag snes = tagRepo.save(new Tag("SNES", "Originally released on Super Nintendo"));
-		Tag psx = tagRepo.save(new Tag("PSX", "Originally released on Sony Playstation"));
-		Tag pc = tagRepo.save(new Tag("PC", "Originally released on PC"));
-		Tag twoD = tagRepo.save(new Tag("2D", "2D graphics"));
-		Tag threeD = tagRepo.save(new Tag("3D", "3D graphics"));
+		Tag snes = tagRepo.save(new Tag("SNES", "Game originally released on Super Nintendo"));
+		Tag psx = tagRepo.save(new Tag("PSX", "Game originally released on Sony Playstation"));
+		Tag pc = tagRepo.save(new Tag("PC", "Game originally released on PC"));
+		Tag twoD = tagRepo.save(new Tag("2D", "Game has 2D graphics"));
+		Tag threeD = tagRepo.save(new Tag("3D", "Game has 3D graphics"));
 		Tag puzzle = tagRepo.save(new Tag("Puzzle", "Game involves puzzle solving"));
 		Tag storyDriven = tagRepo.save(new Tag("Story-Driven", "Game centers around a continuous story"));
 
