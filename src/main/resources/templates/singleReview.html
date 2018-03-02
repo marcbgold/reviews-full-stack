@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title th:text="|{currentReview.title}|"></title>
-<style>
-img {
-	display: block;
-	max-width: 500px;
-	max-height: 300px;
-	width: auto;
-	height: auto;
-}
+	<title th:text="|${currentReview.title} Review|"></title>
+	<style>
+	img {
+		display: block;
+		max-width: 500px;
+		max-height: 300px;
+		width: auto;
+		height: auto;
+	}
 </style>
 
 </head>
@@ -20,12 +20,14 @@ img {
 		<h2 th:text="|${currentReview.title}|"></h2>
 		<p th:text="|Year Published: ${currentReview.yearPublished}|" />
 		<p th:text="|Category: ${currentReview.category.name}|" />
-		<!-- <span>Tags:</span><span th:each="element: ${currentReview.tags}"
-			th:text="| ${element} /|"></span> -->
+		<span>Tags:</span>
+		<span th:each="element: ${currentReview.tags}">
+			<a href="singleTag.html" th:href="@{tag(tagId=${element.id})}" th:text="| ${element.name}|"></a>
+			<span> </span>
+		</span>
 
-		<!-- <p/> -->
 		<img th:src="${currentReview.imageUrl}"
-			th:title="${currentReview.title}" th:alt="${currentReview.title}" />
+		th:title="${currentReview.title}" th:alt="${currentReview.title}" />
 
 		<h3>Haiku</h3>
 		<p th:each="element: ${currentReview.content}" th:text="${element}" />

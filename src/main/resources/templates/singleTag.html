@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title th:text="|All ${currentCategory.name} Reviews|"></title>
+	<title th:text="|Reviews Tagged With ${currentTag.name}|"></title>
 	<style>
 	img {
 		display: block;
@@ -11,16 +11,17 @@
 		height: auto;
 	}
 </style>
+
 </head>
 
 <body>
-	<h1 th:text="|${currentCategory.name}|"></h1>
-	<h3 th:text="|${currentCategory.description}|"></h3>
+	<h1 th:text="|${currentTag.name}|"></h1>
+	<h3 th:text="|${currentTag.description}|"></h3>
 
 	<article>
 		<h2>Review Listing</h2>
 
-		<ul th:each="element: ${reviewListing}">
+		<ul th:each="element: ${currentTag.reviews}">
 			<li><strong><a href="singleReview.html" th:href="@{review(reviewId=${element.id})}" th:text="${element.title}"></a></strong>
 			<span th:text="| - ${element.description}|"></span></li>
 		</ul>
@@ -29,6 +30,5 @@
 	<footer>
 		<a href="categories.html" th:text="|Go back|"></a>
 	</footer>
-
 </body>
 </html>
