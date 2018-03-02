@@ -123,4 +123,19 @@ public class ReviewsFullStackJpaMappingsTest {
 		underTest = tagRepo.findOne(tagId);
 		assertThat(underTest.getReviews(), containsInAnyOrder(firstReview, secondReview));
 	}
+
+	@Test
+	public void shouldGetTagSize() {
+		category = categoryRepo.save(category);
+		Tag underTest = tagRepo.save(new Tag("test", DESC));
+		firstReview = reviewRepo.save(new Review(category, "first review", REV_DATE, YEAR_PUB, DESC, IMG_URL, HAIKU_LINE1, HAIKU_LINE2, HAIKU_LINE3, underTest));
+		secondReview = reviewRepo.save(new Review(category, "second review", REV_DATE, YEAR_PUB, DESC, IMG_URL, HAIKU_LINE1, HAIKU_LINE2, HAIKU_LINE3, underTest));
+		long tagId = underTest.getId();
+
+		entityManager.flush();
+		entityManager.clear();
+
+		underTest = tagRepo.findOne(tagId);
+		assertThat(underTest.getTagSize(), is("medium-tag"));
+	}
 }

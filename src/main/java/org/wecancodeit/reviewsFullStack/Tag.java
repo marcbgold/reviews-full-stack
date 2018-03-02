@@ -46,6 +46,19 @@ public class Tag {
 		return reviews;
 	}
 
+	public String getTagSize() {
+		if (reviews.size() < 2) {
+			return "small-tag";
+		}
+
+		if (reviews.size() < 3) {
+			return "medium-tag";
+		}
+
+		return "large-tag";
+
+	}
+
 	@Override
 	public int hashCode() {
 		return ((Long) id).hashCode();

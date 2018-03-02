@@ -1,0 +1,21 @@
+* {
+	font-family: "Mukta Mahee", sans-serif;
+}
+
+.plain-tag {
+	text-decoration: none;
+}
+
+.small-tag {
+	font-size: 0.75em;
+	font-style: italic;
+}
+
+.medium-tag {
+	font-size: 1em;
+}
+
+.large-tag {
+	font-size: 1.25em;
+	font-style: bold;
+}
