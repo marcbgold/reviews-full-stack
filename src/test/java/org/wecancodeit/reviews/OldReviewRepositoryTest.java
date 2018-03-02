@@ -9,16 +9,16 @@ import java.util.Date;
 
 import org.junit.Test;
 
-public class ReviewRepositoryTest {
+public class OldReviewRepositoryTest {
 
-	ReviewRepository underTest = new ReviewRepository();
-	Review firstReview = new Review(00001L, "first", new Date(), 2018, "category", "description", "imageUrl", "content", "content", "content");
-	Review secondReview = new Review(00002L, "second", new Date(), 2018, "category", "description", "imageUrl", "content", "content", "content");
-	Review thirdReview = new Review(00003L, "third", new Date(), 2018, "category", "description", "imageUrl", "content", "content", "content");
+	OldReviewRepository underTest = new OldReviewRepository();
+	Review firstReview = new Review("category", "first", new Date(), 2018, "description", "imageUrl", "content", "content", "content");
+	Review secondReview = new Review("category", "second", new Date(), 2018, "description", "imageUrl", "content", "content", "content");
+	Review thirdReview = new Review("category", "third", new Date(), 2018, "description", "imageUrl", "content", "content", "content");
 
 	@Test
 	public void shouldFindFirstReviewByID() {
-		underTest = new ReviewRepository(firstReview);
+		underTest = new OldReviewRepository(firstReview);
 		Review found = underTest.getReviewByID(00001L);
 
 		assertThat(found.getTitle(), is("first"));
@@ -26,7 +26,7 @@ public class ReviewRepositoryTest {
 
 	@Test
 	public void shouldFindSecondReviewByID() {
-		underTest = new ReviewRepository(firstReview, secondReview);
+		underTest = new OldReviewRepository(firstReview, secondReview);
 		Review found = underTest.getReviewByID(00002L);
 
 		assertThat(found.getTitle(), is("second"));
@@ -34,7 +34,7 @@ public class ReviewRepositoryTest {
 
 	@Test
 	public void shouldFindAllReviews() {
-		underTest = new ReviewRepository(firstReview, secondReview, thirdReview);
+		underTest = new OldReviewRepository(firstReview, secondReview, thirdReview);
 
 		Collection<Review> result = underTest.getAllReviews();
 

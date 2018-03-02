@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ReviewsController {
 
 	@Resource
-	ReviewRepository repository;
+	OldReviewRepository repository;
 
 	@RequestMapping("/review")
 	public String showReview(@RequestParam(value = "reviewId", required = true) Long id, Model model) {
