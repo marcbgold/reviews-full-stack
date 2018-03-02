@@ -30,7 +30,7 @@ public class ReviewPopulator implements CommandLineRunner {
 		Tag twoD = tagRepo.save(new Tag("2D", "2D graphics"));
 		Tag threeD = tagRepo.save(new Tag("3D", "3D graphics"));
 		Tag puzzle = tagRepo.save(new Tag("Puzzle", "Game involves puzzle solving"));
-		Tag storyDriven = tagRepo.save(new Tag("Story-driven", "Game centers around a continuous story"));
+		Tag storyDriven = tagRepo.save(new Tag("Story-Driven", "Game centers around a continuous story"));
 
 		reviewRepo.save(new Review(rpg, "Chrono Trigger", new Date(), 1995, "Time-hopping shenanigans.", "./images/chrono-trigger.jpg", "Mute, spiky-haired kid",
 				"Saves the world from space monster", "By messing with time", snes, twoD, storyDriven));

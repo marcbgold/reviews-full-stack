@@ -25,7 +25,7 @@ public class CategoryController {
 	@RequestMapping("/category")
 	public String showOneCategory(@RequestParam(value = "categoryId", required = true) Long id, Model model) {
 		Category category = categoryRepo.findOne(id);
-		model.addAttribute("category", category);
+		model.addAttribute("currentCategory", category);
 		model.addAttribute("reviewListing", category.getReviews());
 		return "singleCategory";
 	}
