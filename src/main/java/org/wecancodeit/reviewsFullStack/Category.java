@@ -17,7 +17,7 @@ public class Category {
 	private String description;
 
 	@OneToMany(mappedBy = "category")
-	Collection<Review> reviews;
+	private Collection<Review> reviews;
 
 	public Category() {
 	}

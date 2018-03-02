@@ -13,6 +13,12 @@ public class TagController {
 	@Resource
 	TagRepository tagRepo;
 
+	@RequestMapping("/tags")
+	public String showAllCategories(Model model) {
+		model.addAttribute("tagListing", tagRepo.findAll());
+		return "allTags";
+	}
+
 	@RequestMapping("/tag")
 	public String showTag(@RequestParam(value = "tagId", required = true) Long id, Model model) {
 		model.addAttribute("currentTag", tagRepo.findOne(id));

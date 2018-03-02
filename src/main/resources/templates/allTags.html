@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>All Tags</title>
+	<style>
+	img {
+		display: block;
+		max-width: 500px;
+		max-height: 300px;
+		width: auto;
+		height: auto;
+	}
+</style>
+</head>
+
+<body>
+	<h1>Tag Listing</h1>
+
+	<article>
+		<ul th:each="element: ${tagListing}">
+			<li><strong><a href="singleTag.html" th:href="@{tag(tagId=${element.id})}" th:text="${element.name}"></a>
+			</strong>
+			<span th:text="| - ${element.description}|"></span></li>
+		</ul>
+	</article>
+
+	<footer>
+		<a href="categories" th:text="|Back to main|"></a>
+	</footer>
+</body>
+</html>

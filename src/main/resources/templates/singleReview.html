@@ -17,7 +17,7 @@
 <body>
 	<article>
 		<p th:text="|Review Date: ${#dates.format(currentReview.reviewDate, 'MM-dd-yyyy')}|" />
-		<h2 th:text="|${currentReview.title}|"></h2>
+		<h1 th:text="|${currentReview.title}|"></h1>
 		<p th:text="|Year Published: ${currentReview.yearPublished}|" />
 		<p th:text="|Category: ${currentReview.category.name}|" />
 		<span>Tags:</span>
