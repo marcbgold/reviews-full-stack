@@ -28,26 +28,30 @@ public class ReviewsFullStackJpaMappingsTest {
 	@Resource
 	private CategoryRepository categoryRepo;
 
-	// @Resource
-	// private TagRepository tagRepo;
+	@Resource
+	private TagRepository tagRepo;
 
-	private static final Date REVIEW_DATE = new Date();
-	private static final int YEAR_PUBLISHED = 2018;
-	private static final String DESCRIPTION = "description";
-	private static final String IMAGE_URL = "image url";
-	private static final String HAIKU_FIRST_LINE = "haiku first line";
-	private static final String HAIKU_SECOND_LINE = "haiku second line";
-	private static final String HAIKU_THIRD_LINE = "haiku third line";
+	private static final Date REV_DATE = new Date();
+	private static final int YEAR_PUB = 2018;
+	private static final String DESC = "description";
+	private static final String IMG_URL = "image url";
+	private static final String HAIKU_LINE1 = "haiku first line";
+	private static final String HAIKU_LINE2 = "haiku second line";
+	private static final String HAIKU_LINE3 = "haiku third line";
 
 	Review firstReview;
 	Review secondReview;
 	Category category;
+	Tag firstTag;
+	Tag secondTag;
 
 	@Before
 	public void setup() {
-		category = new Category("category", "description");
-		firstReview = new Review(category, "first review", REVIEW_DATE, YEAR_PUBLISHED, DESCRIPTION, IMAGE_URL, HAIKU_FIRST_LINE, HAIKU_SECOND_LINE, HAIKU_THIRD_LINE);
-		secondReview = new Review(category, "second review", REVIEW_DATE, YEAR_PUBLISHED, DESCRIPTION, IMAGE_URL, HAIKU_FIRST_LINE, HAIKU_SECOND_LINE, HAIKU_THIRD_LINE);
+		category = new Category("category", DESC);
+		firstTag = new Tag("first", DESC);
+		secondTag = new Tag("second", DESC);
+		firstReview = new Review(category, "first review", REV_DATE, YEAR_PUB, DESC, IMG_URL, HAIKU_LINE1, HAIKU_LINE2, HAIKU_LINE3);
+		secondReview = new Review(category, "second review", REV_DATE, YEAR_PUB, DESC, IMG_URL, HAIKU_LINE1, HAIKU_LINE2, HAIKU_LINE3);
 	}
 
 	@Test
@@ -64,7 +68,7 @@ public class ReviewsFullStackJpaMappingsTest {
 	}
 
 	@Test
-	public void shouldEstablishCategoryToReviewRelationship() {
+	public void shouldEstablishManyReviewsToOneCategoryRelationship() {
 		category = categoryRepo.save(category);
 		long categoryId = category.getId();
 
@@ -78,46 +82,45 @@ public class ReviewsFullStackJpaMappingsTest {
 		assertThat(category.getReviews(), containsInAnyOrder(firstReview, secondReview));
 	}
 
-	// @Test
-	// public void shouldSaveAndLoadAuthor() {
-	// Author underTest = authorRepo.save(new Author("first", "last"));
-	// long AuthorId = underTest.getId();
-	//
-	// entityManager.flush();
-	// entityManager.clear();
-	//
-	// underTest = authorRepo.findOne(AuthorId);
-	// assertThat(underTest.getFirstName(), is("first"));
-	// }
-	//
-	// @Test
-	// public void shouldEstablishAuthorsToBooksRelationship() {
-	// Genre genre = genreRepo.save(new Genre("test"));
-	// Author firstAuthor = authorRepo.save(new Author("first", "last"));
-	// Author secondAuthor = authorRepo.save(new Author("first", "last"));
-	// Book book = bookRepo.save(new Book(genre, "Java", firstAuthor,
-	// secondAuthor));
-	// long bookId = book.getId();
-	//
-	// entityManager.flush();
-	// entityManager.clear();
-	//
-	// book = bookRepo.findOne(bookId);
-	// assertThat(book.getAuthors(), containsInAnyOrder(firstAuthor, secondAuthor));
-	// }
-	//
-	// @Test
-	// public void shouldEstablishBooksToAuthorsRelationship() {
-	// Genre genre = genreRepo.save(new Genre("test"));
-	// Author author = authorRepo.save(new Author("first", "last"));
-	// Book firstBook = bookRepo.save(new Book(genre, "Java", author));
-	// Book secondBook = bookRepo.save(new Book(genre, "Ruby", author));
-	// long authorId = author.getId();
-	//
-	// entityManager.flush();
-	// entityManager.clear();
-	//
-	// author = authorRepo.findOne(authorId);
-	// assertThat(author.getBooks(), containsInAnyOrder(firstBook, secondBook));
-	// }
+	@Test
+	public void shouldSaveAndLoadTag() {
+		Tag underTest = tagRepo.save(new Tag("name", "description"));
+		long TagId = underTest.getId();
+
+		entityManager.flush();
+		entityManager.clear();
+
+		underTest = tagRepo.findOne(TagId);
+		assertThat(underTest.getName(), is("name"));
+	}
+
+	@Test
+	public void shouldEstablishManyTagsToOneReviewRelationship() {
+		category = categoryRepo.save(category);
+		firstTag = tagRepo.save(new Tag("first", DESC));
+		secondTag = tagRepo.save(new Tag("second", DESC));
+		Review underTest = reviewRepo.save(new Review(category, "test", REV_DATE, YEAR_PUB, DESC, IMG_URL, HAIKU_LINE1, HAIKU_LINE2, HAIKU_LINE3, firstTag, secondTag));
+		long reviewId = underTest.getId();
+
+		entityManager.flush();
+		entityManager.clear();
+
+		underTest = reviewRepo.findOne(reviewId);
+		assertThat(underTest.getTags(), containsInAnyOrder(firstTag, secondTag));
+	}
+
+	@Test
+	public void shouldEstablishManyReviewsToOneTagRelationship() {
+		category = categoryRepo.save(category);
+		Tag underTest = tagRepo.save(new Tag("test", DESC));
+		firstReview = reviewRepo.save(new Review(category, "first review", REV_DATE, YEAR_PUB, DESC, IMG_URL, HAIKU_LINE1, HAIKU_LINE2, HAIKU_LINE3, underTest));
+		secondReview = reviewRepo.save(new Review(category, "second review", REV_DATE, YEAR_PUB, DESC, IMG_URL, HAIKU_LINE1, HAIKU_LINE2, HAIKU_LINE3, underTest));
+		long tagId = underTest.getId();
+
+		entityManager.flush();
+		entityManager.clear();
+
+		underTest = tagRepo.findOne(tagId);
+		assertThat(underTest.getReviews(), containsInAnyOrder(firstReview, secondReview));
+	}
 }

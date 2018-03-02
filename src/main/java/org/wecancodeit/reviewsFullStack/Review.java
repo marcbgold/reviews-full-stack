@@ -3,14 +3,17 @@ package org.wecancodeit.reviewsFullStack;
 import static java.util.Arrays.asList;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -34,14 +37,14 @@ public class Review {
 	@ElementCollection
 	private Collection<String> content;
 
-	// @ManyToMany
-	// private Collection<String> tags = new ArrayList<>();
+	@ManyToMany
+	private Collection<Tag> tags;
 
 	public Review() {
 	}
 
 	public Review(Category category, String title, Date reviewDate, int yearPublished, String description, String imageUrl, String haikuFirstLine, String haikuSecondLine,
-			String haikuThirdLine) { // , String... tagInput) {
+			String haikuThirdLine, Tag... tags) {
 		this.category = category;
 		this.title = title;
 		this.reviewDate = reviewDate;
@@ -49,8 +52,7 @@ public class Review {
 		this.description = description;
 		this.imageUrl = imageUrl;
 		this.content = new ArrayList<String>(asList(haikuFirstLine, haikuSecondLine, haikuThirdLine));
-		// for (String current : tagInput) {
-		// this.tags.add(current);
+		this.tags = new HashSet<>(Arrays.asList(tags));
 	}
 
 	public long getId() {
@@ -85,9 +87,9 @@ public class Review {
 		return content;
 	}
 
-	// public Collection<String> getTags() {
-	// return tags;
-	// }
+	public Collection<Tag> getTags() {
+		return tags;
+	}
 
 	@Override
 	public int hashCode() {
