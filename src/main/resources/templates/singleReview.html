@@ -3,31 +3,37 @@
 <head>
 	<title th:text="|${currentReview.title} Review|"></title>
 
+	<link rel="stylesheet" href="./css/layout.css" />
 	<link rel="stylesheet" href="./css/style.css" />
 	<link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet" />
 </head>
 
 <body>
-	<article>
-		<p th:text="|Review Date: ${#dates.format(currentReview.reviewDate, 'MM-dd-yyyy')}|" />
-		<h1 th:text="|${currentReview.title}|"></h1>
-		<p th:text="|Year Published: ${currentReview.yearPublished}|" />
-		<p th:text="|Category: ${currentReview.category.name}|" />
-		<span>Tags:</span>
-		<span th:each="element: ${currentReview.tags}">
-			<a href="singleTag.html" th:href="@{tag(tagId=${element.id})}" th:text="| ${element.name}|"></a>
-			<span> </span>
-		</span>
+	<div class="container">
+		<article>
+			<header>
+				<h1 th:text="|${currentReview.title}|"></h1>
+			</header>
 
-		<img th:src="${currentReview.imageUrl}"
-		th:title="${currentReview.title}" th:alt="${currentReview.title}" />
+			<p th:text="|Review Date: ${#dates.format(currentReview.reviewDate, 'MM-dd-yyyy')}|" />
+			<p th:text="|Year Published: ${currentReview.yearPublished}|" />
+			<p th:text="|Category: ${currentReview.category.name}|" />
+			<span>Tags:</span>
+			<span th:each="element: ${currentReview.tags}">
+				<a href="singleTag.html" th:href="@{tag(tagId=${element.id})}" th:text="| ${element.name}|"></a>
+				<span> </span>
+			</span>
 
-		<h3>Haiku</h3>
-		<p th:each="element: ${currentReview.content}" th:text="${element}" />
-	</article>
+			<img th:src="${currentReview.imageUrl}"
+			th:title="${currentReview.title}" th:alt="${currentReview.title}" />
 
-	<footer>
-		<a href="singleCategory.html" th:href="@{category(categoryId=${currentReview.category.id})}" th:text="|Go back|"></a>
-	</footer>
+			<h3>Haiku</h3>
+			<p th:each="element: ${currentReview.content}" th:text="${element}" />
+		</article>
+
+		<footer>
+			<a href="singleCategory.html" th:href="@{category(categoryId=${currentReview.category.id})}" th:text="|Go back|"></a>
+		</footer>
+	</div>
 </body>
 </html>

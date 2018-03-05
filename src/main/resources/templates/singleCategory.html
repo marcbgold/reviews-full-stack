@@ -3,26 +3,30 @@
 <head>
 	<title th:text="|All ${currentCategory.name} Reviews|"></title>
 
+	<link rel="stylesheet" href="./css/layout.css" />
 	<link rel="stylesheet" href="./css/style.css" />
 	<link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet" />
 </head>
 
 <body>
-	<h1 th:text="|${currentCategory.name}|"></h1>
-	<h3 th:text="|${currentCategory.description}|"></h3>
+	<div class="container">
+		<header>
+			<h1 th:text="|${currentCategory.name}|"></h1>
+		</header>
+		<h3 th:text="|${currentCategory.description}|"></h3>
 
-	<article>
-		<h2>Review Listing</h2>
+		<article>
+			<h2>Review Listing</h2>
 
-		<ul th:each="element: ${reviewListing}">
-			<li><strong><a href="singleReview.html" th:href="@{review(reviewId=${element.id})}" th:text="${element.title}"></a></strong>
-			<span th:text="| - ${element.description}|"></span></li>
-		</ul>
-	</article>
+			<ul th:each="element: ${reviewListing}">
+				<li><strong><a href="singleReview.html" th:href="@{review(reviewId=${element.id})}" th:text="${element.title}"></a></strong>
+					<span th:text="| - ${element.description}|"></span></li>
+				</ul>
+			</article>
 
-	<footer>
-		<a href="categories.html" th:text="|Go back|"></a>
-	</footer>
-
+		<footer>
+			<a href="categories.html" th:text="|Go back|"></a>
+		</footer>
+	</div>
 </body>
 </html>

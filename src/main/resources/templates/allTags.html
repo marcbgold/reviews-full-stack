@@ -3,24 +3,28 @@
 <head>
 	<title>All Tags</title>
 
+	<link rel="stylesheet" href="./css/layout.css" />
 	<link rel="stylesheet" href="./css/style.css" />
 	<link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet" />
 </head>
 
 <body>
-	<h1>Tag Listing</h1>
+	<div class="container">
+		<header>
+			<h1>Tag Listing</h1>
+		</header>
+		<article>
+			<ul th:each="element: ${tagListing}">
+				<li><a href="singleTag.html" class="plain-tag" th:href="@{tag(tagId=${element.id})}" th:text="${element.name}"
+					th:classappend="${element.tagSize}"></a>
+					<span th:text="| - ${element.description}|"></span>
+				</li>
+			</ul>
+		</article>
 
-	<article>
-		<ul th:each="element: ${tagListing}">
-			<li><a href="singleTag.html" class="plain-tag" th:href="@{tag(tagId=${element.id})}" th:text="${element.name}"
-				th:classappend="${element.tagSize}"></a>
-				<span th:text="| - ${element.description}|"></span>
-			</li>
-		</ul>
-	</article>
-
-	<footer>
-		<a href="categories" th:text="|Back to main|"></a>
-	</footer>
+		<footer>
+			<a href="categories" th:text="|Back to main|"></a>
+		</footer>
+	</div>
 </body>
 </html>

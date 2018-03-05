@@ -3,28 +3,32 @@
 <head>
 	<title>Haiku Reviews</title>
 
+	<link rel="stylesheet" href="./css/layout.css" />
 	<link rel="stylesheet" href="./css/style.css" />
 	<link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet" />
 </head>
 
 <body>
-	<h1>Haiku Reviews</h1>
+	<div class="container">
+		<header>
+			<h1>Haiku Reviews</h1>
+		</header>
+		<h3>An assortment of video games, reviewed via haiku. For those
+		who like brevity.</h3>
 
-	<h3>An assortment of video games, reviewed via haiku. For those
-	who like brevity.</h3>
+		<article>
+			<h2>Category Listing</h2>
 
-	<article>
-		<h2>Category Listing</h2>
+			<ul th:each="element: ${categoryListing}">
+				<li><strong><a href="singleCategory.html" th:href="@{category(categoryId=${element.id})}" th:text="${element.name}"></a>
+				</strong>
+				<span th:text="| - ${element.description}|"></span></li>
+			</ul>
 
-		<ul th:each="element: ${categoryListing}">
-			<li><strong><a href="singleCategory.html" th:href="@{category(categoryId=${element.id})}" th:text="${element.name}"></a>
-			</strong>
-			<span th:text="| - ${element.description}|"></span></li>
-		</ul>
+			<h3><a href="tags" th:text="|Tag Listing|"></a></h3>
 
-		<h3><a href="tags" th:text="|Tag Listing|"></a></h3>
-
-		<img src="./images/wallshroom.jpg" title="Graffiti shroom" alt="Graffiti shroom" />
-	</article>
+			<img src="./images/wallshroom.jpg" title="Graffiti shroom" alt="Graffiti shroom" />
+		</article>
+	</div>
 </body>
 </html>
