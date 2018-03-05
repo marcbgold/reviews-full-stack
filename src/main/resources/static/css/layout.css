@@ -8,6 +8,10 @@ header h1 {
 	margin: 0;
 }
 
+article {
+	padding-left: 1rem;
+}
+
 img {
 	margin-top: 1rem;
 }

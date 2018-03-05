@@ -10,11 +10,10 @@
 
 <body>
 	<div class="container">
+		<header>
+			<h1 th:text="|${currentReview.title}|"></h1>
+		</header>
 		<article>
-			<header>
-				<h1 th:text="|${currentReview.title}|"></h1>
-			</header>
-
 			<p th:text="|Review Date: ${#dates.format(currentReview.reviewDate, 'MM-dd-yyyy')}|" />
 			<p th:text="|Year Published: ${currentReview.yearPublished}|" />
 			<p th:text="|Category: ${currentReview.category.name}|" />

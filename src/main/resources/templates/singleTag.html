@@ -13,9 +13,8 @@
 		<header>
 			<h1 th:text="|${currentTag.name}|"></h1>
 		</header>
-		<h3 th:text="|${currentTag.description}|"></h3>
-
 		<article>
+			<h3 th:text="|${currentTag.description}|"></h3>
 			<h2>Review Listing</h2>
 
 			<ul th:each="element: ${currentTag.reviews}">
