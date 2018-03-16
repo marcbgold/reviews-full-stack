@@ -34,14 +34,23 @@
 
 
 				<aside class="review-comments">
+					<div class="comment-listing">
+						<h3>Comment Listing</h3>
+						<div class="single-comment" th:each="currentComment: ${currentReview.comments}">
+							<p th:text="${currentComment.posterName}"></p>
+							<p th:text="${currentComment.text}"></p>
+						</div>
+					</div>
 					<div>
 						<h3>Add Comment</h3>
 						<form method="POST">
 							<p>Name:</p>
 							<p><input type="text" name="posterName"></input></p>
 							<p>Comment:</p>
-							<p><textarea class="comment-box" name="comment"></textarea></p>
-							<p><input th:formaction="@{'/review/' + ${currentReview.id}}" type="submit"></input></p>
+							<p><textarea class="comment-box" name="commentText"></textarea></p>
+							<p><input th:formaction="@{'/review/' + ${currentReview.id} + '/addcomment'}"
+								type="submit" value="Post Comment">
+							</input></p>
 						</form>
 					</div>
 				</aside>

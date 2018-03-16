@@ -35,7 +35,7 @@ public class Comment {
 		return review;
 	}
 
-	public String getName() {
+	public String getPosterName() {
 		return posterName;
 	}
 

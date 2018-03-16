@@ -96,6 +96,14 @@ public class Review {
 		return tags;
 	}
 
+	public Collection<Comment> getComments() {
+		return comments;
+	}
+
+	public void addComment(Comment comment) {
+
+	}
+
 	@Override
 	public int hashCode() {
 		return ((Long) id).hashCode();
