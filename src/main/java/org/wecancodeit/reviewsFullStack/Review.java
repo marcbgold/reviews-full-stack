@@ -100,6 +100,10 @@ public class Review {
 		return comments;
 	}
 
+	public void removeTag(Tag tag) {
+		tags.remove(tag);
+	}
+
 	public void addComment(Comment comment) {
 
 	}

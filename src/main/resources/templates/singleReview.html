@@ -12,6 +12,7 @@
 	<div class="review-container">
 		<header class="review-header">
 			<h1 th:text="|${currentReview.title}|"></h1>
+			<p class="review-id" th:text="${currentReview.id}"></p>
 		</header>
 		<main>
 			<div class="review-body">
@@ -20,9 +21,10 @@
 					<p th:text="|Year Published: ${currentReview.yearPublished}|" />
 					<p th:text="|Category: ${currentReview.category.name}|" />
 					<span>Tags:</span>
-					<span th:each="element: ${currentReview.tags}">
-						<a th:href="@{'/tag/' + ${element.id}}" th:text="| ${element.name}|"></a>
-						<span> </span>
+					<span class="review-tag" th:each="element: ${currentReview.tags}">
+						<span data-key="1"></span>
+						<a th:href="@{'/tag/' + ${element.id}}" th:text="|${element.name}|"></a>
+						<a class="tag-delete-x" th:href="@{'/review/' + ${currentReview.id} + '/tag/' + ${element.id} + '/deletetag'}"> x</a>
 					</span>
 
 					<img th:src="${currentReview.imageUrl}"
@@ -58,7 +60,7 @@
 							<p><input type="text" name="posterName"></input></p>
 							<p>Comment:</p>
 							<p><textarea class="comment-box" name="commentText"></textarea></p>
-							<p><input th:formaction="@{'/review/' + ${currentReview.id} + '/addcomment'}"
+							<p><input class="comment-add-button" th:formaction="@{'/review/' + ${currentReview.id} + '/addcomment'}"
 								type="submit" value="Post Comment">
 							</input></p>
 						</form>

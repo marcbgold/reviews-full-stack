@@ -33,6 +33,13 @@ footer a:hover {
 	color: goldenrod;
 }
 
+.comment-add-button {
+	color: white;
+	background-color: #00004d;
+	font-size: 1.01em;
+	border-radius: 0.25rem;
+}
+
 .single-comment {
 	border-style: solid;
 	border-color: lightgray;
@@ -50,6 +57,22 @@ footer a:hover {
 .comment-delete-button:hover {
 	color: goldenrod;
 	cursor: pointer;
+}
+
+.review-tag {
+	background-color: #00004d;
+}
+
+.review-tag a {
+	color: white;
+}
+
+.review-tag a:visited {
+	color: white;
+}
+
+.review-tag a:hover {
+	color: goldenrod;
 }
 
 .plain-tag {

@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TagController {
 
 	@Resource
+	ReviewRepository reviewRepo;
+
+	@Resource
 	TagRepository tagRepo;
 
 	@RequestMapping("/tags")

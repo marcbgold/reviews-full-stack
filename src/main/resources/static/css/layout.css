@@ -24,6 +24,10 @@ header h1 {
 	min-height: 100%;
 }
 
+.review-id {
+	display: none;
+}
+
 .main {
 	display: flex;
 	flex-direction: column;
@@ -74,6 +78,12 @@ header h1 {
 
 .comment-text {
 	grid-column: 1 / -1;
+}
+
+.review-tag {
+	padding: 0.25em;
+	border-radius: 0.25em;
+	margin-right: 0.25em;
 }
 
 article {
