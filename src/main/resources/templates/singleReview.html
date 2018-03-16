@@ -9,28 +9,46 @@
 </head>
 
 <body>
-	<div class="container">
-		<header>
+	<div class="review-container">
+		<header class="review-header">
 			<h1 th:text="|${currentReview.title}|"></h1>
 		</header>
-		<article>
-			<p th:text="|Review Date: ${#dates.format(currentReview.reviewDate, 'MM-dd-yyyy')}|" />
-			<p th:text="|Year Published: ${currentReview.yearPublished}|" />
-			<p th:text="|Category: ${currentReview.category.name}|" />
-			<span>Tags:</span>
-			<span th:each="element: ${currentReview.tags}">
-				<a th:href="@{'/tag/' + ${element.id}}" th:text="| ${element.name}|"></a>
-				<span> </span>
-			</span>
+		<main>
+			<div class="review-body">
+				<article class="review-content">
+					<p th:text="|Review Date: ${#dates.format(currentReview.reviewDate, 'MM-dd-yyyy')}|" />
+					<p th:text="|Year Published: ${currentReview.yearPublished}|" />
+					<p th:text="|Category: ${currentReview.category.name}|" />
+					<span>Tags:</span>
+					<span th:each="element: ${currentReview.tags}">
+						<a th:href="@{'/tag/' + ${element.id}}" th:text="| ${element.name}|"></a>
+						<span> </span>
+					</span>
 
-			<img th:src="${currentReview.imageUrl}"
-			th:title="${currentReview.title}" th:alt="${currentReview.title}" />
+					<img th:src="${currentReview.imageUrl}"
+					th:title="${currentReview.title}" th:alt="${currentReview.title}" />
 
-			<h3>Haiku</h3>
-			<p th:each="element: ${currentReview.content}" th:text="${element}" />
-		</article>
+					<h3>Haiku</h3>
+					<p th:each="element: ${currentReview.content}" th:text="${element}" />
+				</article>
 
-		<footer>
+
+				<aside class="review-comments">
+					<div>
+						<h3>Add Comment</h3>
+						<form method="POST">
+							<p>Name:</p>
+							<p><input type="text" name="posterName"></input></p>
+							<p>Comment:</p>
+							<p><textarea class="comment-box" name="comment"></textarea></p>
+							<p><input th:formaction="@{'/review/' + ${currentReview.id}}" type="submit"></input></p>
+						</form>
+					</div>
+				</aside>
+			</div>
+			
+		</main>
+		<footer class="review-footer">
 			<a th:href="@{'/category/' + ${currentReview.category.id}}" th:text="|Go back|"></a>
 		</footer>
 	</div>

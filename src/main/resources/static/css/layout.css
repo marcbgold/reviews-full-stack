@@ -1,11 +1,43 @@
-body {
+html {
+	height: 100%;
 	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	position: relative;
 	margin: 0;
-	padding: 0;
+	padding-bottom: 2rem;
+	min-height: 100%;
 }
 
 header h1 {
 	margin: 0;
+}
+
+.review-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.review-body {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.comment-box {
+	width: 20rem;
+	height: 5rem;
 }
 
 article {
@@ -14,4 +46,11 @@ article {
 
 img {
 	margin-top: 1rem;
+}
+
+.review-footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
 }
