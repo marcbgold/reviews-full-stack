@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Review {
@@ -40,7 +41,11 @@ public class Review {
 	@ManyToMany
 	private Collection<Tag> tags;
 
-	public Review() {
+	@OneToMany(mappedBy = "review")
+	private Collection<Comment> comments;
+
+	@SuppressWarnings("unused")
+	private Review() {
 	}
 
 	public Review(Category category, String title, Date reviewDate, int yearPublished, String description, String imageUrl, String haikuFirstLine, String haikuSecondLine,

@@ -19,7 +19,8 @@ public class Category {
 	@OneToMany(mappedBy = "category")
 	private Collection<Review> reviews;
 
-	public Category() {
+	@SuppressWarnings("unused")
+	private Category() {
 	}
 
 	public Category(String name, String description) {
