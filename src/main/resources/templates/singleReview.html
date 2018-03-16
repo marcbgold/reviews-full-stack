@@ -37,8 +37,14 @@
 					<div class="comment-listing">
 						<h3>Comment Listing</h3>
 						<div class="single-comment" th:each="currentComment: ${currentReview.comments}">
-							<p th:text="${currentComment.posterName}"></p>
-							<p th:text="${currentComment.text}"></p>
+							<div class="comment-top-row">
+								<span id="comment-name">
+									<span><strong>Name:</strong></span>
+									<span th:text="${currentComment.posterName}"></span>
+								</span>
+								<button class="comment-delete-button"><strong>x</strong></button>
+							</div>
+							<p class="comment-text" th:text="${currentComment.text}"></p>
 						</div>
 					</div>
 					<div>

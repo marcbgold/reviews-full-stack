@@ -10,7 +10,7 @@ html {
 body {
 	position: relative;
 	margin: 0;
-	padding-bottom: 2rem;
+	padding-bottom: 2.25rem;
 	min-height: 100%;
 }
 
@@ -36,7 +36,7 @@ header h1 {
 }
 
 .review-comments {
-	padding-right: 1rem;
+	width: 70%;
 }
 
 .comment-box {
@@ -45,18 +45,35 @@ header h1 {
 }
 
 .single-comment {
+	display: grid;
+	grid-template-rows: auto auto;
 	padding: 0.5rem;
 	margin-bottom: 0.5rem;
-	border-style: solid;
-	border-color: lightgray;
-	border-width: 2px;
-	border-radius: 0.5rem;
-/*	background-color: darkgray;
-	color: white;*/
 }
 
-.single-comment p {
+.single-comment p, .single-comment span {
 	margin: 0.25rem;
+}
+
+.comment-top-row {
+	display: flex;
+	justify-content: space-between;
+}
+
+#comment-name {
+	margin-left: 0;
+}
+
+#comment-name span {
+	margin-right: 0;
+}
+
+.comment-delete-button {
+	margin-top: 0;
+}
+
+.comment-text {
+	grid-column: 1 / -1;
 }
 
 article {

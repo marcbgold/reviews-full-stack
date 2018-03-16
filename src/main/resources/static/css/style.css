@@ -33,6 +33,25 @@ footer a:hover {
 	color: goldenrod;
 }
 
+.single-comment {
+	border-style: solid;
+	border-color: lightgray;
+	border-width: 2px;
+	border-radius: 0.5rem;
+}
+
+.comment-delete-button {
+	font-size: 1.1em;
+	background-color: white;
+	border-style: none;
+	padding-bottom: 0.5em;
+}
+
+.comment-delete-button:hover {
+	color: goldenrod;
+	cursor: pointer;
+}
+
 .plain-tag {
 	text-decoration: none;
 }
