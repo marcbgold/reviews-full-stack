@@ -3,9 +3,9 @@
 <head>
 	<title th:text="|${currentReview.title} Review|"></title>
 
-	<link rel="stylesheet" href="./css/layout.css" />
-	<link rel="stylesheet" href="./css/style.css" />
 	<link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet" />
+	<link rel="stylesheet" href="/css/layout.css" />
+	<link rel="stylesheet" href="/css/style.css" />
 </head>
 
 <body>
@@ -19,7 +19,7 @@
 			<p th:text="|Category: ${currentReview.category.name}|" />
 			<span>Tags:</span>
 			<span th:each="element: ${currentReview.tags}">
-				<a href="singleTag.html" th:href="@{tag(tagId=${element.id})}" th:text="| ${element.name}|"></a>
+				<a th:href="@{'/tag/' + ${element.id}}" th:text="| ${element.name}|"></a>
 				<span> </span>
 			</span>
 
@@ -31,7 +31,7 @@
 		</article>
 
 		<footer>
-			<a href="singleCategory.html" th:href="@{category(categoryId=${currentReview.category.id})}" th:text="|Go back|"></a>
+			<a th:href="@{'/category/' + ${currentReview.category.id}}" th:text="|Go back|"></a>
 		</footer>
 	</div>
 </body>

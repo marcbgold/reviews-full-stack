@@ -3,9 +3,9 @@
 <head>
 	<title>Haiku Reviews</title>
 
-	<link rel="stylesheet" href="./css/layout.css" />
-	<link rel="stylesheet" href="./css/style.css" />
 	<link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet" />
+	<link rel="stylesheet" href="/css/layout.css" />
+	<link rel="stylesheet" href="/css/style.css" />
 </head>
 
 <body>
@@ -19,7 +19,7 @@
 			<h2>Category Listing</h2>
 
 			<ul th:each="element: ${categoryListing}">
-				<li><strong><a href="singleCategory.html" th:href="@{category(categoryId=${element.id})}" th:text="${element.name}"></a>
+				<li><strong><a th:href="@{'/category/' + ${element.id}}" th:text="${element.name}"></a>
 				</strong>
 				<span th:text="| - ${element.description}|"></span></li>
 			</ul>

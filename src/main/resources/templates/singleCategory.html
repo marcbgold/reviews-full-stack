@@ -3,9 +3,9 @@
 <head>
 	<title th:text="|All ${currentCategory.name} Reviews|"></title>
 
-	<link rel="stylesheet" href="./css/layout.css" />
-	<link rel="stylesheet" href="./css/style.css" />
 	<link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet" />
+	<link rel="stylesheet" href="/css/layout.css" />
+	<link rel="stylesheet" href="/css/style.css" />
 </head>
 
 <body>
@@ -18,13 +18,13 @@
 			<h2>Review Listing</h2>
 
 			<ul th:each="element: ${reviewListing}">
-				<li><strong><a href="singleReview.html" th:href="@{review(reviewId=${element.id})}" th:text="${element.title}"></a></strong>
+				<li><strong><a th:href="@{'/review/' + ${element.id}}" th:text="${element.title}"></a></strong>
 					<span th:text="| - ${element.description}|"></span></li>
 				</ul>
 			</article>
 
 		<footer>
-			<a href="categories.html" th:text="|Go back|"></a>
+			<a href="/" th:text="|Go back|"></a>
 		</footer>
 	</div>
 </body>

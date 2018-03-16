@@ -3,8 +3,8 @@
 <head>
 	<title th:text="|Reviews Tagged With ${currentTag.name}|"></title>
 
-	<link rel="stylesheet" href="./css/layout.css" />
-	<link rel="stylesheet" href="./css/style.css" />
+	<link rel="stylesheet" href="/css/layout.css" />
+	<link rel="stylesheet" href="/css/style.css" />
 	<link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet" />
 </head>
 
@@ -18,13 +18,13 @@
 			<h2>Review Listing</h2>
 
 			<ul th:each="element: ${currentTag.reviews}">
-				<li><strong><a href="singleReview.html" th:href="@{review(reviewId=${element.id})}" th:text="${element.title}"></a></strong>
+				<li><strong><a th:href="@{'/review/' + ${element.id}}" th:text="${element.title}"></a></strong>
 					<span th:text="| - ${element.description}|"></span></li>
 				</ul>
 		</article>
 
 		<footer>
-			<a href="tags" th:text="|Back to tag listing|"></a>
+			<a href="/tags" th:text="|Back to tag listing|"></a>
 		</footer>
 	</div>
 </body>
