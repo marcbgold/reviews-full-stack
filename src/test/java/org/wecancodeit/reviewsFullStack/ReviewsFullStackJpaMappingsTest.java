@@ -138,4 +138,6 @@ public class ReviewsFullStackJpaMappingsTest {
 		underTest = tagRepo.findOne(tagId);
 		assertThat(underTest.getTagSize(), is("medium-tag"));
 	}
+
+	// TODO add tests for comments
 }

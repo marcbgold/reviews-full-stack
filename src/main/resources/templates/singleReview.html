@@ -43,7 +43,7 @@
 									<span th:text="${currentComment.posterName}"></span>
 								</span>
 								<form action="POST">
-									<button type="submit" class="comment-delete-button" name="commentId" th:value="${currentComment.id}" th:formaction="@{'/review/' + ${currentReview.id} + '/deletecomment'}">
+									<button type="submit" class="comment-delete-button" th:formaction="@{'/review/' + ${currentReview.id} + '/deletecomment/' + ${currentComment.id}}">
 										<strong>x</strong>
 									</button>
 								</form>

@@ -31,14 +31,13 @@ public class ReviewController {
 		currentReview.addComment(comment);
 		reviewRepo.save(currentReview);
 
-		System.out.println(comment.getPosterName());
 		return "redirect:/review/{id}";
 	}
 
-	@RequestMapping("/review/{id}/deletecomment")
-	public String deleteComment(@PathVariable Long id, Long commentId) {
+	@RequestMapping("/review/{reviewId}/deletecomment/{commentId}")
+	public String deleteComment(@PathVariable Long reviewId, @PathVariable Long commentId) {
 		commentRepo.delete(commentId);
-		return "redirect:/review/{id}";
+		return "redirect:/review/{reviewId}";
 	}
 
 }
