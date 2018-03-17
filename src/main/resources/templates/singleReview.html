@@ -12,7 +12,7 @@
 	<div class="review-container">
 		<header class="review-header">
 			<h1 th:text="|${currentReview.title}|"></h1>
-			<input type="hidden" id="review-id" th:value="${currentReview.id}"></input>
+			<input type="hidden" id="review-id" th:value="${currentReview.id}" />
 		</header>
 		<main>
 			<div class="review-body">
@@ -33,9 +33,10 @@
 
 					<span th:fragment="tag-list">
 						<span class="review-tag" th:each="currentTag: ${currentReview.tags}">
-							<span th:attr="dataKey=${currentTag.id}"></span>
 							<a th:href="@{'/tag/' + ${currentTag.id}}" th:text="|${currentTag.name}|"></a>
-							<a class="tag-delete-x"> x</a> <!-- th:href="@{'/review/' + ${currentReview.id} + '/tag/' + ${currentTag.id} + '/deletetag'}" -->
+							<a class="tag-delete-x"> x</a>
+							<input type="hidden" th:value="${currentTag.id}" />
+							 <!-- th:href="@{'/review/' + ${currentReview.id} + '/tag/' + ${currentTag.id} + '/deletetag'}" -->
 						</span>
 					</span>
 

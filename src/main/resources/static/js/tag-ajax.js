@@ -4,9 +4,8 @@ const currentReviewId = reviewIdElement.value
 const tagList = document.querySelectorAll('.tag-delete-x')
 tagList.forEach(function(x) {
 	x.addEventListener('click', function() {
-		const parentTag = this.parentNode
-		alert(currentReviewId)
-
+		const currentTagId = x.nextElementSibling.value
+		alert('review ID=' + currentReviewId + ' and tag ID=' + currentTagId)
 	})
 })
 
