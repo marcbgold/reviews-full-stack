@@ -12,19 +12,31 @@
 	<div class="review-container">
 		<header class="review-header">
 			<h1 th:text="|${currentReview.title}|"></h1>
-			<p class="review-id" th:text="${currentReview.id}"></p>
+			<input type="hidden" id="review-id" th:value="${currentReview.id}"></input>
 		</header>
 		<main>
 			<div class="review-body">
 				<article class="review-content">
-					<p th:text="|Review Date: ${#dates.format(currentReview.reviewDate, 'MM-dd-yyyy')}|" />
-					<p th:text="|Year Published: ${currentReview.yearPublished}|" />
-					<p th:text="|Category: ${currentReview.category.name}|" />
-					<span>Tags:</span>
-					<span class="review-tag" th:each="element: ${currentReview.tags}">
-						<span data-key="1"></span>
-						<a th:href="@{'/tag/' + ${element.id}}" th:text="|${element.name}|"></a>
-						<a class="tag-delete-x" th:href="@{'/review/' + ${currentReview.id} + '/tag/' + ${element.id} + '/deletetag'}"> x</a>
+					<p>
+						<strong th:text="|Review Date: |" />
+						<span th:text="|${#dates.format(currentReview.reviewDate, 'MM-dd-yyyy')}|" />
+					</p>
+					<p>
+						<strong th:text="|Year Published: |" />
+						<span th:text="${currentReview.yearPublished}|" />
+					</p>
+					<p>
+						<strong th:text="|Category: |" />
+						<span th:text="|${currentReview.category.name}|" />
+					</p>
+					<strong><span>Tags:</span></strong>
+
+					<span th:fragment="tag-list">
+						<span class="review-tag" th:each="currentTag: ${currentReview.tags}">
+							<span th:attr="dataKey=${currentTag.id}"></span>
+							<a th:href="@{'/tag/' + ${currentTag.id}}" th:text="|${currentTag.name}|"></a>
+							<a class="tag-delete-x"> x</a> <!-- th:href="@{'/review/' + ${currentReview.id} + '/tag/' + ${currentTag.id} + '/deletetag'}" -->
+						</span>
 					</span>
 
 					<img th:src="${currentReview.imageUrl}"
@@ -73,5 +85,6 @@
 			<a th:href="@{'/category/' + ${currentReview.category.id}}" th:text="|Go back|"></a>
 		</footer>
 	</div>
+	<script src="/js/tag-ajax.js"></script>
 </body>
 </html>

@@ -27,4 +27,14 @@ public class TagController {
 		model.addAttribute("currentTag", tagRepo.findOne(id));
 		return "singleTag";
 	}
+
+	@RequestMapping("/review/{reviewId}/tag/{tagId}/deletetag")
+	public String deleteTagFromReview(@PathVariable Long reviewId, @PathVariable Long tagId) {
+		Review review = reviewRepo.findOne(reviewId);
+		Tag tag = tagRepo.findOne(tagId);
+		review.removeTag(tag);
+
+		reviewRepo.save(review);
+		return ("singleReview :: tag-list");
+	}
 }
