@@ -39,7 +39,11 @@ header h1 {
 	grid-template-columns: 1fr 1fr;
 }
 
-.review-comments {
+.input-forms-and-comments {
+	width: 70%;
+}
+
+#tagDescription {
 	width: 70%;
 }
 

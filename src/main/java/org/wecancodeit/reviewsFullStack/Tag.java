@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Tag {
 
@@ -16,6 +18,7 @@ public class Tag {
 	private String name;
 	private String description;
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "tags")
 	private Collection<Review> reviews;
 
@@ -44,6 +47,7 @@ public class Tag {
 		return reviews;
 	}
 
+	@JsonIgnore
 	public String getTagSize() {
 		if (reviews.size() < 2) {
 			return "small-tag";

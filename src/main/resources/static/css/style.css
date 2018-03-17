@@ -33,7 +33,7 @@ footer a:hover {
 	color: goldenrod;
 }
 
-.comment-add-button {
+.comment-add-button, .tag-add-button {
 	color: white;
 	background-color: #00004d;
 	font-size: 1.01em;
@@ -73,6 +73,7 @@ footer a:hover {
 
 .review-tag a:hover {
 	color: goldenrod;
+	cursor: pointer;
 }
 
 .plain-tag {

@@ -27,10 +27,7 @@ public class ReviewController {
 		Review currentReview = reviewRepo.findOne(id);
 		Comment comment = new Comment(currentReview, posterName, commentText);
 		commentRepo.save(comment);
-
-		currentReview.addComment(comment);
 		reviewRepo.save(currentReview);
-
 		return "redirect:/review/{id}";
 	}
 

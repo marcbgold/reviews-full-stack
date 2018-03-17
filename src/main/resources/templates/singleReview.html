@@ -31,14 +31,15 @@
 					</p>
 					<strong><span>Tags:</span></strong>
 
-					<span th:fragment="tag-list">
+					<span class="tag-list">
 						<span class="review-tag" th:each="currentTag: ${currentReview.tags}">
 							<a th:href="@{'/tag/' + ${currentTag.id}}" th:text="|${currentTag.name}|"></a>
 							<a class="tag-delete-x"> x</a>
 							<input type="hidden" th:value="${currentTag.id}" />
-							 <!-- th:href="@{'/review/' + ${currentReview.id} + '/tag/' + ${currentTag.id} + '/deletetag'}" -->
 						</span>
 					</span>
+
+					
 
 					<img th:src="${currentReview.imageUrl}"
 					th:title="${currentReview.title}" th:alt="${currentReview.title}" />
@@ -48,7 +49,18 @@
 				</article>
 
 
-				<aside class="review-comments">
+				<aside class="input-forms-and-comments">
+
+					<h3>Add Tag</h3>
+					<form method="POST">
+						<p><span>Tag Name:</span>
+						<input type="text" id="tagName"></input></p>
+						<p><span>Tag Description:</span>
+						<input type="text" id="tagDescription"></input></p>
+						<p><input type="button" class="tag-add-button" value="Submit">
+						</input></p>
+					</form>
+
 					<div class="comment-listing">
 						<h3>Comment Listing</h3>
 						<div class="single-comment" th:each="currentComment: ${currentReview.comments}">

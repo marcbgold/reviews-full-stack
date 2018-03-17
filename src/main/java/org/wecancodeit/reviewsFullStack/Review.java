@@ -106,12 +106,12 @@ public class Review {
 		return comments;
 	}
 
-	public void removeTag(Tag tag) {
-		tags.remove(tag);
+	public void addTag(Tag tag) {
+		tags.add(tag);
 	}
 
-	public void addComment(Comment comment) {
-
+	public void removeTag(Tag tag) {
+		tags.remove(tag);
 	}
 
 	@Override
