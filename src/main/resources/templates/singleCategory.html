@@ -12,6 +12,14 @@
 	<div class="container">
 		<header>
 			<h1 th:text="|${currentCategory.name}|"></h1>
+
+			<nav>
+            	<div class="nav-links hidden">
+                	<a href="/">Categories</a>
+                	<a href="/tags">Tag Listing</a>
+            	</div>
+            	<img class="nav-icon" src="/images/hamburger-menu-icon.png"></img>
+        	</nav>
 		</header>
 		<article>
 			<h3 th:text="|${currentCategory.description}|"></h3>
@@ -24,8 +32,13 @@
 			</article>
 
 		<footer>
-			<a href="/" th:text="|Go back|"></a>
+			<h3>
+				<a href="/" th:text="|Back to main|" />
+				<a class="footer-center" href="http://marcbgold.github.io" th:text="marcbgold.github.io" />
+				<span class="footer-right">©2018</span>
+			</h3>
 		</footer>
 	</div>
+	<script src="/js/header.js"></script>
 </body>
 </html>

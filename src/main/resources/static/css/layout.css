@@ -135,8 +135,14 @@ article {
 }
 
 img {
-	margin-top: 1rem;
 	margin-bottom: 1rem;
+}
+
+.front-page-image {
+	max-width: 28%;
+	max-height: 28%;
+	width: auto;
+	height: auto;
 }
 
 footer {
@@ -147,5 +153,15 @@ footer {
 }
 
 footer h3 {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 	margin: 0;
+}
+
+.footer-center {
+	text-align: center; 
+}
+
+.footer-right {
+	text-align: right;
 }

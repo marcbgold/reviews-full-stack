@@ -112,6 +112,10 @@ main img {
 	height: auto;
 }
 
+footer h3 {
+	/*font-size: 1em;*/
+}
+
 footer a {
 	color: white;
 }
