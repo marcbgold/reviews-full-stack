@@ -25,6 +25,9 @@ public class ReviewController {
 	@RequestMapping("/review/{id}/addcomment")
 	public String addCommentToReview(@PathVariable Long id, String posterName, String commentText) {
 		Review currentReview = reviewRepo.findOne(id);
+		if (posterName.equals("")) {
+			posterName += "Anonymous";
+		}
 		Comment comment = new Comment(currentReview, posterName, commentText);
 		commentRepo.save(comment);
 		reviewRepo.save(currentReview);

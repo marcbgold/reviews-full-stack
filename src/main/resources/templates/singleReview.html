@@ -54,9 +54,9 @@
 					<h3>Add Tag</h3>
 					<form method="POST">
 						<p><span>Tag Name:</span>
-						<input type="text" id="tagName"></input></p>
+						<input type="text" id="tagName" required="true"></input></p>
 						<p><span>Tag Description:</span>
-						<input type="text" id="tagDescription"></input></p>
+						<input type="text" id="tagDescription" required="true"></input></p>
 						<p><input type="button" class="tag-add-button" value="Submit">
 						</input></p>
 					</form>
@@ -84,7 +84,7 @@
 							<p>Name:</p>
 							<p><input type="text" name="posterName"></input></p>
 							<p>Comment:</p>
-							<p><textarea class="comment-box" name="commentText"></textarea></p>
+							<p><textarea class="comment-box" name="commentText" required="true"></textarea></p>
 							<p><input class="comment-add-button" th:formaction="@{'/review/' + ${currentReview.id} + '/addcomment'}"
 								type="submit" value="Post Comment">
 							</input></p>

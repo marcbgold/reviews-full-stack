@@ -17,19 +17,21 @@ public class TagRestController {
 
 	@RequestMapping("/review/{reviewId}/addtag/{tagName}/{tagDescription}")
 	public Tag deleteTagFromReview(@PathVariable Long reviewId, @PathVariable String tagName, @PathVariable String tagDescription) {
-		// if (!(tagRepo.findByName(tagName).equals(null))) {
-		// return null;
-		// }
-
-		// TODO add duplicate tag prevention
-
-		Tag tag = new Tag(tagName, tagDescription);
-		tagRepo.save(tag);
-
 		Review review = reviewRepo.findOne(reviewId);
-		review.addTag(tag);
+		Tag tag = tagRepo.findByNameIgnoreCase(tagName);
+
+		if (tag == null) {
+			tag = new Tag(tagName, tagDescription);
+			tagRepo.save(tag);
+		}
+
+		String result = review.addTag(tag);
 		reviewRepo.save(review);
-		return (tag);
+		if (result.equals("added")) {
+			return tag;
+		} else {
+			return null;
+		}
 	}
 
 	@RequestMapping("/review/{reviewId}/tag/{tagId}/deletetag")
@@ -38,6 +40,6 @@ public class TagRestController {
 		Tag tag = tagRepo.findOne(tagId);
 		review.removeTag(tag);
 		reviewRepo.save(review);
-		return (null);
+		return null;
 	}
 }

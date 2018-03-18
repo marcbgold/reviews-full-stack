@@ -106,8 +106,13 @@ public class Review {
 		return comments;
 	}
 
-	public void addTag(Tag tag) {
-		tags.add(tag);
+	public String addTag(Tag tag) {
+		if (!(tags.contains(tag))) {
+			tags.add(tag);
+			return "added";
+		} else {
+			return "duplicate";
+		}
 	}
 
 	public void removeTag(Tag tag) {
