@@ -104,18 +104,6 @@ a:hover {
 	font-style: bold;
 }
 
-main img {
-	display: block;
-	max-width: 55%;
-	max-height: 55%;
-	width: auto;
-	height: auto;
-}
-
-footer h3 {
-	/*font-size: 1em;*/
-}
-
 footer a {
 	color: white;
 }

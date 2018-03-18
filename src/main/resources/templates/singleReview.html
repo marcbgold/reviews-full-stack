@@ -15,90 +15,90 @@
 			<input type="hidden" id="review-id" th:value="${currentReview.id}" />
 
 			<nav>
-            	<div class="nav-links hidden">
-                	<a href="/">Categories</a>
-                	<a href="/tags">Tag Listing</a>
-            	</div>
-            	<img class="nav-icon" src="/images/hamburger-menu-icon.png"></img>
-        	</nav>
+				<div class="nav-links hidden">
+					<a href="/">Categories</a>
+					<a href="/tags">Tag Listing</a>
+				</div>
+				<img class="nav-icon" src="/images/hamburger-menu-icon.png"></img>
+			</nav>
 		</header>
 		<main>
-			<div class="review-body">
-				<article class="review-content">
-					<p>
-						<strong th:text="|Review Date: |" />
-						<span th:text="|${#dates.format(currentReview.reviewDate, 'MM-dd-yyyy')}|" />
-					</p>
-					<p>
-						<strong th:text="|Year Published: |" />
-						<span th:text="${currentReview.yearPublished}|" />
-					</p>
-					<p>
-						<strong th:text="|Category: |" />
-						<span th:text="|${currentReview.category.name}|" />
-					</p>
-					<strong><span>Tags:</span></strong>
+			<article class="review-content">
+				<p>
+					<strong th:text="|Review Date: |" />
+					<span th:text="|${#dates.format(currentReview.reviewDate, 'MM-dd-yyyy')}|" />
+				</p>
+				<p>
+					<strong th:text="|Year Published: |" />
+					<span th:text="${currentReview.yearPublished}|" />
+				</p>
+				<p>
+					<strong th:text="|Category: |" />
+					<span th:text="|${currentReview.category.name}|" />
+				</p>
+				<strong><span>Tags:</span></strong>
 
-					<span class="tag-list">
-						<span class="review-tag" th:each="currentTag: ${currentReview.tags}">
-							<a th:href="@{'/tag/' + ${currentTag.id}}" th:text="|${currentTag.name}|"></a>
-							<a class="tag-delete-x">x</a>
-							<input type="hidden" th:value="${currentTag.id}" />
-						</span>
+				<span class="tag-list">
+					<span class="review-tag" th:each="currentTag: ${currentReview.tags}">
+						<a th:href="@{'/tag/' + ${currentTag.id}}" th:text="|${currentTag.name}|"></a>
+						<a class="tag-delete-x">x</a>
+						<input type="hidden" th:value="${currentTag.id}" />
 					</span>
+				</span>
 
-					<h3>Haiku</h3>
-					<p th:each="element: ${currentReview.content}" th:text="${element}" />
+				<h3>Haiku</h3>
+				<p th:each="element: ${currentReview.content}" th:text="${element}" />
 
-					<img th:src="${currentReview.imageUrl}"
-					th:title="${currentReview.title}" th:alt="${currentReview.title}" />
-				</article>
+				<img class="review-img" th:src="${currentReview.imageUrl}"
+				th:title="${currentReview.title}" th:alt="${currentReview.title}" />
+			</article>
 
+			<aside class="input-forms-and-comments">
+				<h3>Add Tag</h3>
+				<form method="POST">
+					<p>
+						<span>Tag Name:</span>
+						<input type="text" id="tagName" required="true" maxlength="15"></input>
+					</p>
+					<p>
+						<span>Tag Description:</span>
+						<input type="text" id="tagDescription" required="true"></input>
+					</p>
+					<p>
+						<input type="button" class="tag-add-button" value="Submit"></input>
+					</p>
+				</form>
 
-				<aside class="input-forms-and-comments">
-
-					<h3>Add Tag</h3>
+				<div class="comment-listing">
+					<h3>Comment Listing</h3>
+					<div class="single-comment" th:each="currentComment: ${currentReview.comments}">
+						<div class="comment-top-row">
+							<span id="comment-name">
+								<span><strong>Name:</strong></span>
+								<span th:text="${currentComment.posterName}"></span>
+							</span>
+							<form action="POST" onsubmit="return confirm('Are you sure you want to delete this?');">
+								<button type="submit" class="comment-delete-button" th:formaction="@{'/review/' + ${currentReview.id} + '/deletecomment/' + ${currentComment.id}}">
+									<strong>x</strong>
+								</button>
+							</form>
+						</div>
+						<p class="comment-text" th:text="${currentComment.text}"></p>
+					</div>
+				</div>
+				<div>
+					<h3>Add Comment</h3>
 					<form method="POST">
-						<p><span>Tag Name:</span>
-						<input type="text" id="tagName" required="true" maxlength="15"></input></p>
-						<p><span>Tag Description:</span>
-						<input type="text" id="tagDescription" required="true"></input></p>
-						<p><input type="button" class="tag-add-button" value="Submit">
+						<p>Name:</p>
+						<p><input type="text" name="posterName" maxlength="20"></input></p>
+						<p>Comment:</p>
+						<p><textarea class="comment-box" name="commentText" required="true"></textarea></p>
+						<p><input class="comment-add-button" th:formaction="@{'/review/' + ${currentReview.id} + '/addcomment'}"
+							type="submit" value="Post Comment">
 						</input></p>
 					</form>
-
-					<div class="comment-listing">
-						<h3>Comment Listing</h3>
-						<div class="single-comment" th:each="currentComment: ${currentReview.comments}">
-							<div class="comment-top-row">
-								<span id="comment-name">
-									<span><strong>Name:</strong></span>
-									<span th:text="${currentComment.posterName}"></span>
-								</span>
-								<form action="POST" onsubmit="return confirm('Are you sure you want to delete this?');">
-									<button type="submit" class="comment-delete-button" th:formaction="@{'/review/' + ${currentReview.id} + '/deletecomment/' + ${currentComment.id}}">
-										<strong>x</strong>
-									</button>
-								</form>
-							</div>
-							<p class="comment-text" th:text="${currentComment.text}"></p>
-						</div>
-					</div>
-					<div>
-						<h3>Add Comment</h3>
-						<form method="POST">
-							<p>Name:</p>
-							<p><input type="text" name="posterName" maxlength="20"></input></p>
-							<p>Comment:</p>
-							<p><textarea class="comment-box" name="commentText" required="true"></textarea></p>
-							<p><input class="comment-add-button" th:formaction="@{'/review/' + ${currentReview.id} + '/addcomment'}"
-								type="submit" value="Post Comment">
-							</input></p>
-						</form>
-					</div>
-				</aside>
-			</div>
-			
+				</div>
+			</aside>
 		</main>
 		<footer>
 			<h3>
