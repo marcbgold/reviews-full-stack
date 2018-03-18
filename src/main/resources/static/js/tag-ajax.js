@@ -1,15 +1,3 @@
-const commentDeleteButtons = document.querySelectorAll('.comment-delete-button')
-if (commentDeleteButtons) {
-	commentDeleteButtons.forEach(function (button) {
-		button.addEventListener('click', function() {
-		const response = confirm("Are you sure you want to delete this?")
-		
-		if (response) {
-			element.parentNode.parentNode.parentNode.remove();
-		}
-	})
-}
-
 const xhr = new XMLHttpRequest()
 
 const reviewIdElement = document.querySelector('#review-id')

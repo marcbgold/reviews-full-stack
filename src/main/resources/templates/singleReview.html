@@ -13,6 +13,14 @@
 		<header class="review-header">
 			<h1 th:text="|${currentReview.title}|"></h1>
 			<input type="hidden" id="review-id" th:value="${currentReview.id}" />
+
+			<nav>
+            	<div class="nav-links hidden">
+                	<a href="/">Categories</a>
+                	<a href="/tags">Tag Listing</a>
+            	</div>
+            	<img class="nav-icon" src="/images/hamburger-menu-icon.png"></img>
+        	</nav>
 		</header>
 		<main>
 			<div class="review-body">
@@ -34,7 +42,7 @@
 					<span class="tag-list">
 						<span class="review-tag" th:each="currentTag: ${currentReview.tags}">
 							<a th:href="@{'/tag/' + ${currentTag.id}}" th:text="|${currentTag.name}|"></a>
-							<a class="tag-delete-x"> x</a>
+							<a class="tag-delete-x">x</a>
 							<input type="hidden" th:value="${currentTag.id}" />
 						</span>
 					</span>
@@ -52,7 +60,7 @@
 					<h3>Add Tag</h3>
 					<form method="POST">
 						<p><span>Tag Name:</span>
-						<input type="text" id="tagName" required="true"></input></p>
+						<input type="text" id="tagName" required="true" maxlength="15"></input></p>
 						<p><span>Tag Description:</span>
 						<input type="text" id="tagDescription" required="true"></input></p>
 						<p><input type="button" class="tag-add-button" value="Submit">
@@ -80,7 +88,7 @@
 						<h3>Add Comment</h3>
 						<form method="POST">
 							<p>Name:</p>
-							<p><input type="text" name="posterName"></input></p>
+							<p><input type="text" name="posterName" maxlength="20"></input></p>
 							<p>Comment:</p>
 							<p><textarea class="comment-box" name="commentText" required="true"></textarea></p>
 							<p><input class="comment-add-button" th:formaction="@{'/review/' + ${currentReview.id} + '/addcomment'}"
@@ -93,9 +101,10 @@
 			
 		</main>
 		<footer>
-			<a th:href="@{'/category/' + ${currentReview.category.id}}" th:text="|Go back|"></a>
+			<h3><a th:href="@{'/category/' + ${currentReview.category.id}}" th:text="|Go back|"></a></h3>
 		</footer>
 	</div>
+	<script src="/js/app.js"></script>
 	<script src="/js/tag-ajax.js"></script>
 </body>
 </html>
