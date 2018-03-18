@@ -10,26 +10,32 @@ header, footer {
 a {
 	text-decoration: none;
 	color: royalblue;
+	transition: 0.15s;
 }
 
 a:visited {
 	color: royalblue;
+	transition: 0.15s;
 }
 
 a:hover {
 	color: goldenrod;
+	transition: 0.15s;
 }
 
-footer a {
+.nav-links {
 	color: white;
+	font-size: 1.5em;
 }
 
-footer a:visited {
+.nav-links a, .nav-links a:visited {
 	color: white;
+	transition: 0.15s;
 }
 
-footer a:hover {
+.nav-links a:hover {
 	color: goldenrod;
+	transition: 0.15s;
 }
 
 .comment-add-button, .tag-add-button {
@@ -51,11 +57,13 @@ footer a:hover {
 	background-color: white;
 	border-style: none;
 	padding-bottom: 0.5em;
+	transition: 0.15s;
 }
 
 .comment-delete-button:hover {
 	color: goldenrod;
 	cursor: pointer;
+	transition: 0.15s;
 }
 
 .review-tag {
@@ -64,14 +72,17 @@ footer a:hover {
 
 .review-tag a {
 	color: white;
+	transition: 0.15s;
 }
 
 .review-tag a:visited {
 	color: white;
+	transition: 0.15s;
 }
 
 .review-tag a:hover {
 	color: goldenrod;
+	transition: 0.15s;
 	cursor: pointer;
 }
 
@@ -93,10 +104,22 @@ footer a:hover {
 	font-style: bold;
 }
 
-img {
+main img {
 	display: block;
-	max-width: 500px;
-	max-height: 300px;
+	max-width: 55%;
+	max-height: 55%;
 	width: auto;
 	height: auto;
+}
+
+footer a {
+	color: white;
+}
+
+footer a:visited {
+	color: white;
+}
+
+footer a:hover {
+	color: goldenrod;
 }

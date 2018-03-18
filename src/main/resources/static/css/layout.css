@@ -38,6 +38,7 @@ nav {
 
 .nav-links {
 	display: flex;
+	flex-direction: row;
 	transition: 0.25s;
 }
 
