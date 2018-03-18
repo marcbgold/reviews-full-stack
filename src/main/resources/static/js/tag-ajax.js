@@ -12,7 +12,7 @@ tagDeleteButtonList.forEach(function(xButton) {
 
 function addTagDeleteListener(element) {
 	element.addEventListener('click', function() {
-		const response = confirm("Are you sure you want to delete this?")
+		const response = confirm("Are you sure you want to delete this tag?")
 		
 		if (response) {
 			const currentTagId = element.nextElementSibling.value
