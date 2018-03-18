@@ -36,9 +36,10 @@
 					<strong th:text="|Category: |" />
 					<span th:text="|${currentReview.category.name}|" />
 				</p>
+				<span class="tag-list">
 				<strong><span>Tags:</span></strong>
 
-				<span class="tag-list">
+				
 					<span class="review-tag" th:each="currentTag: ${currentReview.tags}">
 						<a th:href="@{'/tag/' + ${currentTag.id}}" th:text="|${currentTag.name}|"></a>
 						<a class="tag-delete-x">x</a>

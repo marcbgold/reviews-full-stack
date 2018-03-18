@@ -80,12 +80,26 @@ main {
 	grid-template-columns: 1fr 1fr;
 }
 
-.input-forms-and-comments {
-	width: 70%;
+.review-content {
+	padding-right: 1rem;
 }
 
-#tagDescription {
-	width: 70%;
+.tag-list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.review-tag {
+	padding: 0.25em;
+	border-radius: 0.25em;
+	margin-left: 0.25em;
+	margin-bottom: 0.25em;
+	max-height: 2rem;
+}
+
+.review-content h3 {
+	margin-top: 0.75rem;
 }
 
 .review-img {
@@ -93,6 +107,14 @@ main {
 	max-height: 33vh;
 	width: auto;
 	height: auto;
+}
+
+.input-forms-and-comments {
+	width: 70%;
+}
+
+#tagDescription {
+	width: 70%;
 }
 
 .comment-box {
@@ -130,12 +152,6 @@ main {
 
 .comment-text {
 	grid-column: 1 / -1;
-}
-
-.review-tag {
-	padding: 0.25em;
-	border-radius: 0.25em;
-	margin-right: 0.25em;
 }
 
 article {
