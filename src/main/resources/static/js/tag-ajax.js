@@ -1,3 +1,15 @@
+const commentDeleteButtons = document.querySelectorAll('.comment-delete-button')
+if (commentDeleteButtons) {
+	commentDeleteButtons.forEach(function (button) {
+		button.addEventListener('click', function() {
+		const response = confirm("Are you sure you want to delete this?")
+		
+		if (response) {
+			element.parentNode.parentNode.parentNode.remove();
+		}
+	})
+}
+
 const xhr = new XMLHttpRequest()
 
 const reviewIdElement = document.querySelector('#review-id')
@@ -12,15 +24,19 @@ tagDeleteButtonList.forEach(function(xButton) {
 
 function addTagDeleteListener(element) {
 	element.addEventListener('click', function() {
-		const currentTagId = element.nextElementSibling.value
-		const deleteRequestUrl = 'http://localhost:8080/review/' + currentReviewId + '/tag/' + currentTagId + '/deletetag'
+		const response = confirm("Are you sure you want to delete this?")
+		
+		if (response) {
+			const currentTagId = element.nextElementSibling.value
+			const deleteRequestUrl = 'http://localhost:8080/review/' + currentReviewId + '/tag/' + currentTagId + '/deletetag'
 
-		xhr.open('DELETE', deleteRequestUrl, true)
-		xhr.send()
+			xhr.open('DELETE', deleteRequestUrl, true)
+			xhr.send()
 
-		xhr.onreadystatechange = function() {
-			if (this.readyState === 4 && this.status === 200) {
-				element.parentNode.remove();	
+			xhr.onreadystatechange = function() {
+				if (this.readyState === 4 && this.status === 200) {
+					element.parentNode.remove();	
+				}
 			}
 		}
 	})

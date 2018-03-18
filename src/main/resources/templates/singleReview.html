@@ -39,13 +39,11 @@
 						</span>
 					</span>
 
-					
+					<h3>Haiku</h3>
+					<p th:each="element: ${currentReview.content}" th:text="${element}" />
 
 					<img th:src="${currentReview.imageUrl}"
 					th:title="${currentReview.title}" th:alt="${currentReview.title}" />
-
-					<h3>Haiku</h3>
-					<p th:each="element: ${currentReview.content}" th:text="${element}" />
 				</article>
 
 
@@ -69,7 +67,7 @@
 									<span><strong>Name:</strong></span>
 									<span th:text="${currentComment.posterName}"></span>
 								</span>
-								<form action="POST">
+								<form action="POST" onsubmit="return confirm('Are you sure you want to delete this?');">
 									<button type="submit" class="comment-delete-button" th:formaction="@{'/review/' + ${currentReview.id} + '/deletecomment/' + ${currentComment.id}}">
 										<strong>x</strong>
 									</button>
