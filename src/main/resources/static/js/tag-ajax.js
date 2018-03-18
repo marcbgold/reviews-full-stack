@@ -34,10 +34,14 @@ function addTagDeleteListener(element) {
 
 const tagAddButton = document.querySelector('.tag-add-button')
 tagAddButton.addEventListener('click', function() {
-	const tagName = document.querySelector('#tagName').value
-	const tagDescription = document.querySelector('#tagDescription').value
+	const tagNameBox = document.querySelector('#tagName')
+	const tagName = tagNameBox.value
+	const tagDescriptionBox = document.querySelector('#tagDescription')
+	const tagDescription = tagDescriptionBox.value
 
 	if (tagName && tagDescription) {
+		tagNameBox.value = ''
+		tagDescriptionBox.value = ''
 		const addRequestUrl = 'http://localhost:8080/review/' + currentReviewId + '/addtag/' + tagName + '/' + tagDescription
 		xhr.open('PUT', addRequestUrl, true)
 		xhr.send()
