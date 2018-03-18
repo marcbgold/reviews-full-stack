@@ -18,24 +18,22 @@ a:visited {
 	transition: 0.15s;
 }
 
-a:hover {
+.nav-links a,
+.nav-links a:visited,
+.review-tag a,
+.review-tag a:visited,
+footer a,
+footer a:visited {
+	color: white;
+}
+
+a:hover, footer a:hover {
 	color: goldenrod;
 	transition: 0.15s;
 }
 
 .nav-links {
-	color: white;
 	font-size: 1.5em;
-}
-
-.nav-links a, .nav-links a:visited {
-	color: white;
-	transition: 0.15s;
-}
-
-.nav-links a:hover {
-	color: goldenrod;
-	transition: 0.15s;
 }
 
 .comment-add-button, .tag-add-button {
@@ -70,19 +68,7 @@ a:hover {
 	background-color: #00004d;
 }
 
-.review-tag a {
-	color: white;
-	transition: 0.15s;
-}
-
-.review-tag a:visited {
-	color: white;
-	transition: 0.15s;
-}
-
 .review-tag a:hover {
-	color: goldenrod;
-	transition: 0.15s;
 	cursor: pointer;
 }
 
@@ -102,16 +88,4 @@ a:hover {
 .large-tag {
 	font-size: 1.25em;
 	font-style: bold;
-}
-
-footer a {
-	color: white;
-}
-
-footer a:visited {
-	color: white;
-}
-
-footer a:hover {
-	color: goldenrod;
 }
