@@ -40,6 +40,11 @@ public class TagRestController {
 		Tag tag = tagRepo.findOne(tagId);
 		review.removeTag(tag);
 		reviewRepo.save(review);
+
+		if (tag.getReviews().size() == 0) {
+			tagRepo.delete(tag);
+		}
+
 		return null;
 	}
 }

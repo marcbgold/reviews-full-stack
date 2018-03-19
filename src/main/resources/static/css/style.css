@@ -27,7 +27,7 @@ footer a:visited {
 	color: white;
 }
 
-a:hover, footer a:hover {
+a:hover, .nav-links a:hover, footer a:hover {
 	color: goldenrod;
 	transition: 0.15s;
 }
