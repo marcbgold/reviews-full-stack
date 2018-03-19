@@ -70,6 +70,7 @@ a:hover, .nav-links a:hover, footer a:hover {
 
 .review-tag a:hover {
 	cursor: pointer;
+	color: goldenrod;
 }
 
 .plain-tag {
