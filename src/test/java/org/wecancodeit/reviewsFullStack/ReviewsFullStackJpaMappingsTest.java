@@ -31,6 +31,9 @@ public class ReviewsFullStackJpaMappingsTest {
 	@Resource
 	private TagRepository tagRepo;
 
+	@Resource
+	private CommentRepository commentRepo;
+
 	private static final Date REV_DATE = new Date();
 	private static final int YEAR_PUB = 2018;
 	private static final String DESC = "description";
@@ -44,6 +47,8 @@ public class ReviewsFullStackJpaMappingsTest {
 	Category category;
 	Tag firstTag;
 	Tag secondTag;
+	Comment firstComment;
+	Comment secondComment;
 
 	@Before
 	public void setup() {
@@ -139,5 +144,36 @@ public class ReviewsFullStackJpaMappingsTest {
 		assertThat(underTest.getTagSize(), is("medium-tag"));
 	}
 
-	// TODO add tests for comments
+	@Test
+	public void shouldSaveAndLoadComment() {
+		category = categoryRepo.save(category);
+		firstReview = reviewRepo.save(firstReview);
+		firstComment = new Comment(firstReview, "test", DESC);
+		firstComment = commentRepo.save(firstComment);
+		long commentId = firstComment.getId();
+
+		entityManager.flush();
+		entityManager.clear();
+
+		firstComment = commentRepo.findOne(commentId);
+		assertThat(firstComment.getPosterName(), is("test"));
+	}
+
+	@Test
+	public void shouldEstablishManyCommentsToOneReviewRelationship() {
+		category = categoryRepo.save(category);
+		firstReview = reviewRepo.save(firstReview);
+
+		firstComment = new Comment(firstReview, "test", DESC);
+		firstComment = commentRepo.save(firstComment);
+		secondComment = new Comment(firstReview, "test", DESC);
+		secondComment = commentRepo.save(secondComment);
+		long reviewId = firstReview.getId();
+
+		entityManager.flush();
+		entityManager.clear();
+
+		firstReview = reviewRepo.findOne(reviewId);
+		assertThat(firstReview.getComments(), containsInAnyOrder(firstComment, secondComment));
+	}
 }
