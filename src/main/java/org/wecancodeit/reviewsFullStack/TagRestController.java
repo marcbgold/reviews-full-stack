@@ -16,7 +16,7 @@ public class TagRestController {
 	TagRepository tagRepo;
 
 	@RequestMapping("/review/{reviewId}/addtag/{tagName}/{tagDescription}")
-	public Tag deleteTagFromReview(@PathVariable Long reviewId, @PathVariable String tagName, @PathVariable String tagDescription) {
+	public Tag addTagtoReview(@PathVariable Long reviewId, @PathVariable String tagName, @PathVariable String tagDescription) {
 		Review review = reviewRepo.findOne(reviewId);
 		Tag tag = tagRepo.findByNameIgnoreCase(tagName);
 
