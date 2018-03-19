@@ -27,7 +27,10 @@ footer a:visited {
 	color: white;
 }
 
-a:hover, .nav-links a:hover, footer a:hover {
+a:hover,
+.nav-links a:hover,
+.review-tag a:hover,
+footer a:hover {
 	color: goldenrod;
 	transition: 0.15s;
 }
@@ -70,7 +73,6 @@ a:hover, .nav-links a:hover, footer a:hover {
 
 .review-tag a:hover {
 	cursor: pointer;
-	color: goldenrod;
 }
 
 .plain-tag {
