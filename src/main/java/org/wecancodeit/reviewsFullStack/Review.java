@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -44,7 +45,7 @@ public class Review {
 
 	@JsonIgnore
 	@ManyToMany
-	private Collection<Tag> tags;
+	private Set<Tag> tags;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "review")
